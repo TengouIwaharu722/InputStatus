@@ -11,8 +11,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import config.AppConstants;
+import config.AppInitializer;
 import model.RegisterLogic;
 import model.User;
+import util.Debug;
 
 /**
  * サーブレット
@@ -27,13 +29,13 @@ public class Tarminal extends HttpServlet {
 	private static final String FQCN = Tarminal.class.getName();
 
 	@Override
-//	public void init() throws ServletException {
-//		super.init();
-//		//定数クラスの初期化処理
-//		AppInitializer.initiaLize();
-//		Debug.print(FQCN, "初期化完了");
-//
-//	}
+	public void init() throws ServletException {
+		super.init();
+		//定数クラスの初期化処理
+		AppInitializer.initiaLize();
+		Debug.print(FQCN, "初期化完了");
+
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
