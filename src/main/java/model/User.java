@@ -213,7 +213,7 @@ public class User implements Serializable {
 		if (param == null || "".equals(param)) {
 			Debug.print(FQCN, "電話番号が入力されていません");
 			return false;
-		} else if (!param.matches("^(0[1-9]\\d{9}|0[789]0\\d{8})$")) {
+		} else if (!param.matches("^0\\d{9,10}$")) {
 			Debug.print(FQCN, "無効な電話番号です");
 			return false;
 		}

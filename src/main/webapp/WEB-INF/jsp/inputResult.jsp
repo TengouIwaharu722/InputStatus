@@ -63,7 +63,12 @@
 
     <div class="confirm-item">
       <div class="confirm-label">パスワード</div>
-      <div class="confirm-value">●●●●●●●●（非表示）</div>
+      <div class="confirm-value" id="masked-password"></div>
+       <script>
+    		const password = "<%= user != null ? user.getPassword() : "" %>";
+    		const masked = "●".repeat(password.length);
+    		document.getElementById("masked-password").textContent = masked + "（非表示）";
+  		</script>      
     </div>
 
     <div class="button-group">

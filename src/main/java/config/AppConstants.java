@@ -11,6 +11,7 @@ final public class AppConstants {
 	private AppConstants() {};
 
 	/**	デバッグ出力用	*/
+	@SuppressWarnings("unused")
 	private static final String FQCN = AppConstants.class.getName(); 
 	
 	/**	セッションに保持する変数名	*/
@@ -52,8 +53,6 @@ final public class AppConstants {
         				GENDER,BIRTH,PHONE1,PHONE2,PHONE3,ZIP1,ZIP2,
         				ADDRESS,EMAIL,PASSWORD);
         
-        //出力の確認
-       // Debug.print(PARAM_LIST,FQCN);
     }
 		
 }
