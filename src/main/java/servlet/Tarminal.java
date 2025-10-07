@@ -75,7 +75,6 @@ public class Tarminal extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 
 		//フォワード先
 		String forwardPath = null;
