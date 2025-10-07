@@ -54,7 +54,7 @@
 			</div>
 
 			<div class="form-group">
-				<label>フリガナ
+				<label>フリガナ(カタカナ)
 				<% if (user != null && (!user.getValidateMap().get(LAST_FURIGANA)||!user.getValidateMap().get(FIRST_FURIGANA))) { %>
                     <span class="error">：カタカナのみ有効です</span>
                 <% } %>

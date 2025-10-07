@@ -87,11 +87,11 @@ public class User implements Serializable {
 		validateMap.put(FIRST_NAME, isFirstName);
 
 		//姓（カナ）のチェック
-		boolean isLastNameKana = isValidName(this.lastFurigana);
+		boolean isLastNameKana = isValidKanaName(this.lastFurigana);
 		validateMap.put(LAST_FURIGANA, isLastNameKana);
 
 		//名（カナ）のチェック
-		boolean isFirstNameKana = isValidName(this.firstFurigana);
+		boolean isFirstNameKana = isValidKanaName(this.firstFurigana);
 		validateMap.put(FIRST_FURIGANA, isFirstNameKana);
 
 		//誕生日のチェック
@@ -148,8 +148,7 @@ public class User implements Serializable {
 		if (param == null || "".equals(param)) {
 			Debug.print(FQCN, "名（カナ）が入力されていません");
 			return false;
-		} else if (!param.matches("^[ァ-ヶー・]+$")) {
-			;
+		} else if (!param.matches("^[ァ-ヺー・]+$")) {
 			Debug.print(FQCN, "名（カナ）はカタカナのみ有効");
 			return false;
 		}
