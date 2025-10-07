@@ -34,8 +34,7 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="tel"],
-input[type="date"] {
+input[type="tel"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -43,6 +42,15 @@ input[type="date"] {
     font-size: 1em;
     box-sizing: border-box;
 }
+input[type="date"] {
+    width: 20em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+
 
 .radio-group {
     display: flex;
@@ -112,4 +120,7 @@ button:hover {
      font-size: 0.6em;
      margin-left: 10px;
  }
- 
+ .large-input {
+   font-size: 1.2em;
+ }
+
