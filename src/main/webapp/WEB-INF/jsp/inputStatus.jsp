@@ -68,7 +68,7 @@
 
 
 			<div class="form-group">
-				<label>性別<span class="option">任意</span>
+				<label>性別<span class="required">必須</span>
 				</label>
 				<div class="radio-group">
 					<label>
