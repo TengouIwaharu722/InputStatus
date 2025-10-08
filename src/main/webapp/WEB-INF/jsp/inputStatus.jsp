@@ -37,7 +37,7 @@
 		<h1>ユーザー情報入力フォーム</h1>
 		<form action="Tarminal" method="post">
 			<div class="form-group">
-				<label>氏名
+				<label>氏名 <span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(LAST_NAME)||!user.getValidateMap().get(FIRST_NAME))) { %>
                     <span class="error">：名前は英数字・ひらがな・漢字・カタカナのみ有効です</span>
                 <% } %>
@@ -52,7 +52,7 @@
 			</div>
 
 			<div class="form-group">
-				<label>フリガナ(カタカナ)
+				<label>フリガナ(カタカナ)<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(LAST_FURIGANA)||!user.getValidateMap().get(FIRST_FURIGANA))) { %>
                     <span class="error">：カタカナのみ有効です</span>
                 <% } %>
@@ -68,7 +68,8 @@
 
 
 			<div class="form-group">
-				<label>性別</label>
+				<label>性別<span class="option">任意</span>
+				</label>
 				<div class="radio-group">
 					<label>
 						<input type="radio" name="gender" value="男" 
@@ -86,7 +87,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="birth">生年月日
+				<label for="birth">生年月日<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(BIRTH))) { %>
                     <span class="error">：無効な生年月日が入力されています</span>
                 <% } %>
@@ -96,7 +97,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="phone1">電話番号
+				<label for="phone1">電話番号<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(PHONE1))) { %>
                     <span class="error">：固定電話0から始まる10桁。携帯電話11桁で070, 080, 090で始まる数字です</span>
                 <% } %>
@@ -115,7 +116,7 @@
 
 
 			<div class="form-group">
-				<label for="zip1">郵便番号
+				<label for="zip1">郵便番号<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(ZIP1))) { %>
                     <span class="error">：3桁-4桁の数字を入力してください</span>
                 <% } %>				
@@ -131,7 +132,7 @@
 
 
 			<div class="form-group">
-				<label for="address">住所
+				<label for="address">住所<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(ADDRESS))) { %>
                     <span class="error">：無効な値が入力されています</span>
                 <% } %>								
@@ -141,7 +142,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="email">メールアドレス(ログインID)
+				<label for="email">メールアドレス(ログインID)<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(EMAIL))) { %>
                     <span class="error">：無効な値が入力されています</span>
                 <% } %>												
@@ -152,7 +153,7 @@
 
 
 			<div class="form-group">
-				<label for="password">パスワード
+				<label for="password">パスワード<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(PASSWORD))) { %>
                     <span class="error">：8以上16文字以内。大小英文字と記号を1文字以上含むものを入力してください</span>
                 <% } %>																

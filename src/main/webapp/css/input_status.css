@@ -128,6 +128,38 @@ button:hover {
 input::placeholder{
 	color: #aaa; /* 薄いグレー */
 }
+/* 必須アイコン（赤系） */
+.required {
+  display: inline-block;
+/*  background-color: #e74c3c;*/
+  background-color: #e76d60;
 
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: text-top;
+  position:relative;
+  top:3px;	
+  line-height: 1; /* ← 文字の高さを詰めて上に寄せる */
+}
+
+/* 任意アイコン */
+.option {
+  display: inline-block;
+  background-color: #0000cd; /* 青系 */
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: text-top;
+  position:relative;
+  top:3px;	
+  line-height: 1; /* ← 文字の高さを詰めて上に寄せる */
+}
  
  
