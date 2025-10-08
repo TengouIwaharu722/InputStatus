@@ -10,7 +10,6 @@
 	}
 %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,10 +43,10 @@
                 <% } %>
 				</label>
 				<div class="split-input">
-					<input type="text" id="lastName" name="lastName" placeholder="姓" required 
+					<input type="text" id="lastName" name="lastName" placeholder="（例）山田" required 
 					value="<%= user != null ? user.getLastName() : "" %>">
 					
-					<input type="text" id="firstName" name="firstName" placeholder="名" required
+					<input type="text" id="firstName" name="firstName" placeholder="（例）太郎" required
 					value="<%= user != null ? user.getFirstName() : "" %>">
 				</div>
 			</div>
@@ -59,10 +58,10 @@
                 <% } %>
                 </label>
 				<div class="split-input">
-					<input type="text" id="lastFurigana" name="lastFurigana" placeholder="セイ" required
+					<input type="text" id="lastFurigana" name="lastFurigana" placeholder="（例）ヤマダ" required
 					value="<%= user != null ? user.getLastFurigana(): "" %>">
 					
-					<input type="text"id="firstFurigana" name="firstFurigana" placeholder="メイ" required
+					<input type="text"id="firstFurigana" name="firstFurigana" placeholder="（例）タロウ" required
 					value="<%= user != null ? user.getFirstFurigana(): "" %>">
 				</div>
 			</div>
@@ -103,13 +102,13 @@
                 <% } %>
 				</label>
 				<div class="split-input">
-					<input type="text" id="phone1" name="phone1" maxlength="4" required
+					<input type="text" id="phone1" name="phone1" maxlength="4" placeholder="090" required 
 					value="<%= user != null ? user.getPhone1(): "" %>">
 					- 
-					<input type="text" id="phone2" name="phone2" maxlength="4" required
+					<input type="text" id="phone2" name="phone2" maxlength="4" placeholder="1234" required
 					value="<%= user != null ? user.getPhone2(): "" %>">
 					- 
-					<input type="text" id="phone3" name="phone3" maxlength="4" required
+					<input type="text" id="phone3" name="phone3" maxlength="4" placeholder="5678" required
 					value="<%= user != null ? user.getPhone3(): "" %>">					
 				</div>
 			</div>
@@ -122,10 +121,10 @@
                 <% } %>				
 				</label>
 				<div class="split-input">
-					<input type="text" id="zip1" name="zip1" maxlength="3" required
+					<input type="text" id="zip1" name="zip1" maxlength="3" placeholder="123" required
 					value="<%= user != null ? user.getZip1(): "" %>">
 					- 
-					<input type="text" id="zip2" name="zip2" maxlength="4" required
+					<input type="text" id="zip2" name="zip2" maxlength="4" placeholder="4567" required
 					value="<%= user != null ? user.getZip2(): "" %>">
 				</div>
 			</div>
@@ -137,7 +136,7 @@
                     <span class="error">：無効な値が入力されています</span>
                 <% } %>								
 				</label> 
-				<input type="text" id="address" name="address" required
+				<input type="text" id="address" name="address" placeholder="大阪市中央区×××一丁目" required
 					value="<%= user != null ? user.getAddress(): "" %>">				
 			</div>
 
@@ -147,7 +146,7 @@
                     <span class="error">：無効な値が入力されています</span>
                 <% } %>												
 				</label> 
-				<input type="email" id="email" name="email" required
+				<input type="email" id="email" name="email" placeholder="testmail@test.co.jp" required
 					value="<%= user != null ? user.getEmail(): "" %>">
 			</div>
 
@@ -159,7 +158,7 @@
                 <% } %>																
 				</label>
 				<div class="password-wrapper">
-					<input type="password" id="password" name="password" required
+					<input type="password" id="password" name="password" placeholder="1234Ty@Gp" required
 					value="<%= user != null ? user.getPassword(): "" %>">					
 					<span class="toggle-password" onclick="togglePassword()">👁️</span>
 				</div>
@@ -173,5 +172,6 @@
 			</div>
 		</form>
 	</div>
+	<jsp:include page = "footer.jsp"/>
 </body>
 </html>

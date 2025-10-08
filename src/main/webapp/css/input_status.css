@@ -123,4 +123,11 @@ button:hover {
  .large-input {
    font-size: 1.2em;
  }
+ 
+/* 入力欄の参考文字 */
+input::placeholder{
+	color: #aaa; /* 薄いグレー */
+}
 
+ 
+ 
