@@ -67,6 +67,9 @@
 			</div>
 
 
+
+
+
 			<div class="form-group">
 				<label>性別<span class="required">必須</span>
 				</label>
