@@ -1,0 +1,165 @@
+@charset "UTF-8";
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 40px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"]{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+input[type="date"] {
+    width: 20em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0078D7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+.split-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.split-input input {
+    width: 45%;  /* 2つ並べるので半分弱に */
+    margin-right: 5%; /* 間隔を空ける */
+    box-sizing: border-box;
+	font-size: 1em;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+  }
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+	width:100%;
+}
+
+.password-wrapper input {
+	flex:1;
+	height: 40px;           /* 高さを固定 */
+	line-height: 40px;      /* テキストの縦位置を揃える */
+	font-size: 1em;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.2em;
+    user-select: none;
+}
+
+.error {
+     color: red;
+     font-size: 0.6em;
+     margin-left: 10px;
+ }
+ .large-input {
+   font-size: 1.2em;
+ }
+ 
+/* 入力欄の参考文字 */
+input::placeholder{
+	color: #aaa; /* 薄いグレー */
+}
+/* 必須アイコン（赤系） */
+.required {
+  display: inline-block;
+/*  background-color: #e74c3c;*/
+  background-color: #e76d60;
+
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: text-top;
+  position:relative;
+  top:3px;	
+  line-height: 1; /* ← 文字の高さを詰めて上に寄せる */
+}
+
+/* 任意アイコン */
+.option {
+  display: inline-block;
+  background-color: #0000cd; /* 青系 */
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: text-top;
+  position:relative;
+  top:3px;	
+  line-height: 1; /* ← 文字の高さを詰めて上に寄せる */
+}
+ 
+ 
