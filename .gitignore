@@ -4,6 +4,6 @@
 # ビルドフォルダの除外（Maven/Gradle を使っている場合）
 /target/
 /build/
-/bin/
+**/bin/
 .settings/
 
