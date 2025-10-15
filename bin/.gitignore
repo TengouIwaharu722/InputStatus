@@ -1,8 +1,0 @@
-# Java のコンパイル成果物を除外
-*.class
-
-# ビルドフォルダの除外（Maven/Gradle を使っている場合）
-/target/
-/build/
-.settings/
-
