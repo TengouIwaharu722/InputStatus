@@ -12,14 +12,15 @@ import jakarta.servlet.http.HttpSession;
 
 import config.AppConstants;
 import config.AppInitializer;
+import lombok.extern.slf4j.Slf4j;
 import model.RegisterLogic;
 import model.User;
-import util.Debug;
 
 /**
  * サーブレット
  * スタート及びSubmit後
  */
+@Slf4j
 @WebServlet("/Tarminal")
 public class Tarminal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +34,7 @@ public class Tarminal extends HttpServlet {
 		super.init();
 		//定数クラスの初期化処理
 		AppInitializer.initiaLize();
-		Debug.print(FQCN, "初期化完了");
+		log.info("初期化完了");
 
 	}
 

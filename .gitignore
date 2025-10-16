@@ -1,9 +1,19 @@
 # Java のコンパイル成果物を除外
 *.class
 
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
 # ビルドフォルダの除外（Maven/Gradle を使っている場合）
 /target/
 /build/
 **/bin/
-.settings/
+
+# OS・IDEの一時ファイル
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
 

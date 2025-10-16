@@ -13,11 +13,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import config.AppConstants;
-import util.Debug;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ユーザーの入力情報
  */
+@Slf4j
 public class User implements Serializable {
 
 	/**	デバッグ出力用	*/
@@ -76,7 +77,7 @@ public class User implements Serializable {
 						key -> true //値マッパー: すべてのキーに対して固定の値を設定する
 				));
 		//出力の確認
-		Debug.print(FQCN, "バリデーションチェック:"+validateMap);
+		log.debug("バリデーションチェック:"+validateMap);
 
 		//姓のチェック
 		boolean isLastName = isValidName(this.lastName);
@@ -132,10 +133,10 @@ public class User implements Serializable {
 	public boolean isValidName(String param) {
 
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "名前が入力されていません");
+			log.warn("名前が入力されていません");
 			return false;
 		} else if (!param.matches("^[a-zA-Z0-9ぁ-んァ-ヶ一-龯々ー]+$")) {
-			Debug.print(FQCN, "名前は英数字・ひらがな・漢字・カタカナのみ有効です");
+			log.warn("名前は英数字・ひらがな・漢字・カタカナのみ有効です");
 			return false;
 		}
 		return true;
@@ -146,10 +147,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidKanaName(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "名（カナ）が入力されていません");
+			log.warn("名（カナ）はカタカナのみ有効");
 			return false;
 		} else if (!param.matches("^[ァ-ヺー・]+$")) {
-			Debug.print(FQCN, "名（カナ）はカタカナのみ有効");
+			log.warn("名（カナ）が入力されていません");			
 			return false;
 		}
 		return true;
@@ -163,11 +164,10 @@ public class User implements Serializable {
 		final int MAX_AGE = 150;
 
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "誕生日が入力されていません");
+			log.warn("誕生日が入力されていません");
 			return false;
 		} else if (!param.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
-			;
-			Debug.print(FQCN, "誕生日は半角数字のみ有効");
+			log.warn("誕生日は半角数字のみ有効");
 			return false;
 		}
 
@@ -199,7 +199,7 @@ public class User implements Serializable {
 			return true;
 
 		} catch (DateTimeParseException e) {
-			Debug.print(FQCN, "存在しない日付");
+			log.warn("存在しない日付");
 			return false;
 		}
 	}
@@ -211,10 +211,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidPhone(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "電話番号が入力されていません");
+			log.warn("電話番号が入力されていません");
 			return false;
 		} else if (!param.matches("^0\\d{9,10}$")) {
-			Debug.print(FQCN, "無効な電話番号です");
+			log.warn("無効な電話番号です");
 			return false;
 		}
 		return true;
@@ -226,10 +226,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidZip(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "郵便番号が入力されていません");
+			log.warn("郵便番号が入力されていません");
 			return false;
 		} else if (!param.matches("^\\d{7}$")) {
-			Debug.print(FQCN, "無効な郵便番号です");
+			log.warn("無効な郵便番号です");
 			return false;
 		}
 		return true;
@@ -241,10 +241,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidAddress(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "住所が入力されていません");
+			log.warn("住所が入力されていません");
 			return false;
 		} else if (!param.matches("^[一-龠ぁ-ゔァ-ヴー0-9０-９a-zA-ZＡ-Ｚａ-ｚ\\s\\-\\.\\/,\\(\\)\\&・]*$")) {
-			Debug.print(FQCN, "無効な記号が入力されています");
+			log.warn("無効な記号が入力されています");
 			return false;
 		}
 		return true;
@@ -255,10 +255,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidEmail(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "メールアドレスが入力されていません");
+			log.warn("メールアドレスが入力されていません");
 			return false;
 		} else if (!param.matches("^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
-			Debug.print(FQCN, "無効な記号が入力されています");
+			log.warn("無効な記号が入力されています");
 			return false;
 		}
 		return true;
@@ -270,10 +270,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidPassword(String param) {
 		if (param == null || "".equals(param)) {
-			Debug.print(FQCN, "パスワードが入力されていません");
+			log.warn("パスワードが入力されていません");
 			return false;
 		} else if (!param.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$")) {
-			Debug.print(FQCN, "無効なパスワードです");
+			log.warn("無効なパスワードです");
 			return false;
 		}
 		return true;
