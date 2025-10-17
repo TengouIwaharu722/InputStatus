@@ -10,10 +10,6 @@ final public class AppConstants {
 
 	private AppConstants() {};
 
-	/**	デバッグ出力用	*/
-	@SuppressWarnings("unused")
-	private static final String FQCN = AppConstants.class.getName(); 
-	
 	/**	セッションに保持する変数名	*/
 	public static final String SESSION_NAME = "user";
 

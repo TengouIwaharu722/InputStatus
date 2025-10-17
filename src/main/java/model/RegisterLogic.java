@@ -10,14 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RegisterLogic {
 
-	/**	デバッグ出力用	*/
-	private static final String FQCN = RegisterLogic .class.getName(); 
-
 	public boolean execute(User user) {
 		
 		log.debug("ユーザーデータ登録終了");
 		log.debug(user.getFirstName()+" "+user.getLastName()+"のデータ");
 	
+		
+		
+		
+		
 		return true;
 	}
 }

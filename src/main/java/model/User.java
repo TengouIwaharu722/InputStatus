@@ -21,9 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class User implements Serializable {
 
-	/**	デバッグ出力用	*/
-	private static final String FQCN = User.class.getName();
-
+	
 	/**	姓	*/
 	private String lastName;
 	/**	名	*/
@@ -162,7 +160,7 @@ public class User implements Serializable {
 	public boolean isValidBirth(String param) {
 		// 最大年齢（150歳）
 		final int MAX_AGE = 150;
-
+		log.info("誕生日："+param);
 		if (param == null || "".equals(param)) {
 			log.warn("誕生日が入力されていません");
 			return false;

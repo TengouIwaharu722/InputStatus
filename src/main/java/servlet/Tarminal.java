@@ -10,10 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import bo.PostUserLogic;
 import config.AppConstants;
 import config.AppInitializer;
 import lombok.extern.slf4j.Slf4j;
-import model.RegisterLogic;
 import model.User;
 
 /**
@@ -55,11 +55,14 @@ public class Tarminal extends HttpServlet {
 		else if (action.equals("done")) {
 			//セッションスコープに保存された登録ユーザー情報を取得
 			HttpSession session = request.getSession();
-			User uear = (User) session.getAttribute(AppConstants.SESSION_NAME);
+			User usar = (User) session.getAttribute(AppConstants.SESSION_NAME);
 
 			//登録処理の呼び出し
-			RegisterLogic logic = new RegisterLogic();
-			logic.execute(uear);
+//			RegisterLogic logic = new RegisterLogic();
+//			logic.execute(uear);
+			PostUserLogic logic = new PostUserLogic();
+			logic.execute(usar);
+			
 
 			//不要となったセッションスコープ内のインスタンス削除
 			session.removeAttribute(AppConstants.SESSION_NAME);
