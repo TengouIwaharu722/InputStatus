@@ -21,8 +21,36 @@ import util.PassWordEncryption;
 @Slf4j
 public class UserDAO {
 	
+
 	/**
-	 * 個人データの取得
+	 * @param 入力されたEmailがDB上に複数ないかチェック
+	 * @return
+	 */
+	public boolean checkUserEmail(String inputEmail) {
+		
+		// データベースへの接続
+		try (Connection conn = DBManager.getConnection()) {
+
+//			String sql = "SELECT LAST_NAME, FIRST_NAME, LAST_FURIGANA, FIRST_FURIGANA, " +
+//        "GENDER, BIRTH, PHONE01, PHONE02, PHONE03, ZIP01, ZIP02, ADRESS, EMAIL, PASSWORD " +
+//        "FROM USER_DATA WHERE EMAIL = ?";
+			String sql = "SELECT COUNT(*) FROM USER_DATA WHERE EMAIL = ?";
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inputEmail); // inputEmail は検索対象のメールアドレス
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+		    int count = rs.getInt(1);
+		    return count >= 1;	//登録済ならtrue		    
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	/**
+	 * 全個人データの取得
 	 */
 	public List<User> findAll() {
 

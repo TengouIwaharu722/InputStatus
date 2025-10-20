@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import config.AppConstants;
+import dao.UserDAO;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -257,7 +258,11 @@ public class User implements Serializable {
 		} else if (!param.matches("^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
 			log.warn("無効な記号が入力されています");
 			return false;
+		} else if(new UserDAO().checkUserEmail(param)) {
+			log.warn("そのメールアドレスは使用されています");
+			return false;
 		}
+		
 		return true;
 	}
 	
