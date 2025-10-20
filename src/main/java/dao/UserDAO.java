@@ -9,13 +9,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import model.User;
 import util.DBManager;
+import util.PassWordEncryption;
 
 
 /**
  * 個人データの取得とセット
  */
+@Slf4j
 public class UserDAO {
 	
 	/**
@@ -97,7 +100,11 @@ public class UserDAO {
 		pStmt.setString(11, user.getZip2());
 		pStmt.setString(12, user.getAddress());
 		pStmt.setString(13, user.getEmail());
-		pStmt.setString(14, user.getPassword());
+		
+		//暗証番号をハッシュ化
+		String hashPassword = PassWordEncryption.hash(user.getPassword());
+		log.info("ハッシュ化："+hashPassword);
+		pStmt.setString(14, hashPassword);
 
 		int result = pStmt.executeUpdate();
 		return result == 1;
