@@ -38,16 +38,16 @@ public class User implements Serializable {
 	private String birth;
 
 	/**	電話番号1	*/
-	private String phone1;
+	private String phone01;
 	/**	電話番号2	*/
-	private String phone2;
+	private String phone02;
 	/**	電話番号3	*/
-	private String phone3;
+	private String phone03;
 
 	/**	郵便番号1	*/
-	private String zip1;
+	private String zip01;
 	/**	郵便番号2	*/
-	private String zip2;
+	private String zip02;
 	/**	住所	*/
 	private String address;
 	/**	メールアドレス	*/
@@ -98,12 +98,12 @@ public class User implements Serializable {
 		validateMap.put(BIRTH, isBirth);
 
 		//電話番号のチェック(入力は3分割されたものなので合体。keyは1つだけでいいのでPHONE1使用）
-		String phone = this.phone1+this.phone2+this.phone3;
+		String phone = this.phone01+this.phone02+this.phone03;
 		boolean isPhone = isValidPhone(phone);
 		validateMap.put(PHONE1, isPhone);
 		
 		//郵便番号のチェック(入力は2分割されたものなので合体。keyは1つだけでいいのでZIP1使用）
-		String zip = this.zip1+this.zip2;
+		String zip = this.zip01+this.zip02;
 		boolean isZip = isValidZip(zip);
 		validateMap.put(ZIP1, isZip);
 		
@@ -290,11 +290,11 @@ public class User implements Serializable {
 		this.firstFurigana = firstFurigana;
 		this.gender = gender;
 		this.birth = birth;
-		this.phone1 = phone1;
-		this.phone2 = phone2;
-		this.phone3 = phone3;
-		this.zip1 = zip1;
-		this.zip2 = zip2;
+		this.phone01 = phone1;
+		this.phone02 = phone2;
+		this.phone03 = phone3;
+		this.zip01 = zip1;
+		this.zip02 = zip2;
 		this.address = address;
 		this.email = email;
 		this.password = password;
@@ -349,43 +349,43 @@ public class User implements Serializable {
 	}
 
 	public String getPhone1() {
-		return phone1;
+		return phone01;
 	}
 
 	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
+		this.phone01 = phone1;
 	}
 
 	public String getPhone2() {
-		return phone2;
+		return phone02;
 	}
 
 	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
+		this.phone02 = phone2;
 	}
 
 	public String getPhone3() {
-		return phone3;
+		return phone03;
 	}
 
 	public void setPhone3(String phone3) {
-		this.phone3 = phone3;
+		this.phone03 = phone3;
 	}
 
 	public String getZip1() {
-		return zip1;
+		return zip01;
 	}
 
 	public void setZip1(String zip1) {
-		this.zip1 = zip1;
+		this.zip01 = zip1;
 	}
 
 	public String getZip2() {
-		return zip2;
+		return zip02;
 	}
 
 	public void setZip2(String zip2) {
-		this.zip2 = zip2;
+		this.zip02 = zip2;
 	}
 
 	public String getAddress() {

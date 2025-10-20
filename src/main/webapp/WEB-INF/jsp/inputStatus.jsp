@@ -172,7 +172,7 @@
 
 
 			<div class="form-group">
-				<button type="submit">送信</button>
+				<button type="submit">決定</button>
 			</div>
 		</form>
 	</div>
