@@ -58,3 +58,13 @@ body {
    a:hover {
      text-decoration: underline;
    }
+			
+			error-message {
+			  color: red;
+			  background-color: #ffecec;
+			  border: 1px solid #f5c2c2;
+			  padding: 10px;
+			  margin-bottom: 16px;
+			  border-radius: 6px;
+			  font-size: 0.9rem;
+			}

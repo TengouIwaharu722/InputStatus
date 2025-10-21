@@ -18,7 +18,7 @@
 				alt="ありがとう" width="50" height="50">
 		</div>
 
-		<a href="index.html" class="back-button">戻る</a>
+		<a href="login.jsp" class="back-button">戻る</a>
 	</div>
 </body>
 </html>
