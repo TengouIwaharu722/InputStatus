@@ -25,10 +25,6 @@ import model.User;
 public class Tarminal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**	デバッグ出力用	*/
-	@SuppressWarnings("unused")
-	private static final String FQCN = Tarminal.class.getName();
-
 	@Override
 	public void init() throws ServletException {
 		super.init();
