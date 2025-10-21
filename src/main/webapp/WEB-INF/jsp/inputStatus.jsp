@@ -39,7 +39,7 @@
 			<div class="form-group">
 				<label>氏名 <span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(LAST_NAME)||!user.getValidateMap().get(FIRST_NAME))) { %>
-                    <span class="error">：名前は英数字・ひらがな・漢字・カタカナのみ有効です</span>
+                    <span class="error">：<%= ERROR_NAME_INFO %></span>
                 <% } %>
 				</label>
 				<div class="split-input">
@@ -54,7 +54,7 @@
 			<div class="form-group">
 				<label>フリガナ(カタカナ)<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(LAST_FURIGANA)||!user.getValidateMap().get(FIRST_FURIGANA))) { %>
-                    <span class="error">：カタカナのみ有効です</span>
+                    <span class="error">：<%= ERROR_NAME_KANA_INFO %></span>
                 <% } %>
                 </label>
 				<div class="split-input">
@@ -65,10 +65,6 @@
 					value="<%= user != null ? user.getFirstFurigana(): "" %>">
 				</div>
 			</div>
-
-
-
-
 
 			<div class="form-group">
 				<label>性別<span class="required">必須</span>
@@ -92,7 +88,7 @@
 			<div class="form-group">
 				<label for="birth">生年月日<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(BIRTH))) { %>
-                    <span class="error">：無効な生年月日が入力されています</span>
+                    <span class="error">：<%= ERROR_BIRTH_INFO2 %></span>
                 <% } %>
 				</label> 
 				<input type="date" id="birth" name="birth" required
@@ -102,7 +98,7 @@
 			<div class="form-group">
 				<label for="phone1">電話番号<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(PHONE1))) { %>
-                    <span class="error">：固定電話0から始まる10桁。携帯電話11桁で070, 080, 090で始まる数字です</span>
+                    <span class="error">：<%= ERROR_TELL_INFO2 %></span>
                 <% } %>
 				</label>
 				<div class="split-input">
@@ -121,7 +117,7 @@
 			<div class="form-group">
 				<label for="zip1">郵便番号<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(ZIP1))) { %>
-                    <span class="error">：3桁-4桁の数字を入力してください</span>
+                    <span class="error">：<%= ERROR_ZIP_INFO2 %></span>
                 <% } %>				
 				</label>
 				<div class="split-input">
@@ -137,7 +133,7 @@
 			<div class="form-group">
 				<label for="address">住所<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(ADDRESS))) { %>
-                    <span class="error">：無効な値が入力されています</span>
+                    <span class="error">：<%= ERROR_DEFAULT_INFO %></span>
                 <% } %>								
 				</label> 
 				<input type="text" id="address" name="address" placeholder="大阪市中央区×××一丁目" required
@@ -146,9 +142,17 @@
 
 			<div class="form-group">
 				<label for="email">メールアドレス(ログインID)<span class="required">必須</span>
-				<% if (user != null && (!user.getValidateMap().get(EMAIL))) { %>
-                    <span class="error">：無効な値が入力されています</span>
-                <% } %>												
+				<% 
+				if (user != null && (!user.getValidateMap().get(EMAIL))) { 
+				%>
+       <span class="error">：<%= ERROR_DEFAULT_INFO %></span>
+    <% 
+    } else if(user != null &&(!user.getValidateMap().get(EMAIL_ORIZIN))){
+    %>
+    			<span class="error">：<%= ERROR_MAIL_USED %></span>
+    <% 
+    } 
+    %>
 				</label> 
 				<input type="email" id="email" name="email" placeholder="testmail@test.co.jp" required
 					value="<%= user != null ? user.getEmail(): "" %>">
@@ -158,7 +162,7 @@
 			<div class="form-group">
 				<label for="password">パスワード<span class="required">必須</span>
 				<% if (user != null && (!user.getValidateMap().get(PASSWORD))) { %>
-                    <span class="error">：8以上16文字以内。大小英文字と記号を1文字以上含むものを入力してください</span>
+                    <span class="error">：<%= ERROR_PASSWORD_INFO2 %></span>
                 <% } %>																
 				</label>
 				<div class="password-wrapper">
@@ -167,7 +171,7 @@
 					<span class="toggle-password" onclick="togglePassword()">👁️</span>
 				</div>
 				<small class="form-text text-muted">
-					※8以上16文字以内。大小英文字と記号を1文字以上含むものを入力してください</small>
+					※<%= ERROR_PASSWORD_INFO2 %></small>
 			</div>
 
 

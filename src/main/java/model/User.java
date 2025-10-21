@@ -113,9 +113,27 @@ public class User implements Serializable {
 		validateMap.put(ADDRESS, isAddress);
 
 		//メールアドレスのチェック
-		boolean isEmail = isValidEmail(this.email);
-		validateMap.put(EMAIL, isEmail);
+		//boolean isEmail = isValidEmail(this.email);
+		//validateMap.put(EMAIL, isEmail);
 
+		String isEmail = isValidEmail2(this.email);
+		
+		switch(isEmail) {
+		case "":		//email問題なし
+			validateMap.put(EMAIL, true);
+			break;
+		case ERROR_MAIL_NULL:	//email入力なし
+			validateMap.put(EMAIL, false);
+			break;
+		case ERROR_MAIL_INFO:	//無効な値が入っている
+			validateMap.put(EMAIL, false);
+			break;
+		case ERROR_MAIL_USED:	//DB上に存在している
+			validateMap.put(EMAIL, true);	//記述は問題なし
+			validateMap.put(EMAIL_ORIZIN, false);	//DB上に存在
+			break;
+		}
+				
 		//パスワードのチェック
 		boolean isPassword = isValidPassword(this.password);
 		validateMap.put(PASSWORD, isPassword);
@@ -132,10 +150,10 @@ public class User implements Serializable {
 	public boolean isValidName(String param) {
 
 		if (param == null || "".equals(param)) {
-			log.warn("名前が入力されていません");
+			log.warn(AppConstants.ERROR_NAME_NULL);
 			return false;
 		} else if (!param.matches("^[a-zA-Z0-9ぁ-んァ-ヶ一-龯々ー]+$")) {
-			log.warn("名前は英数字・ひらがな・漢字・カタカナのみ有効です");
+			log.warn(AppConstants.ERROR_NAME_INFO);
 			return false;
 		}
 		return true;
@@ -146,10 +164,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidKanaName(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("名（カナ）はカタカナのみ有効");
+			log.warn(AppConstants.ERROR_NAME_KANA_NULL);
 			return false;
 		} else if (!param.matches("^[ァ-ヺー・]+$")) {
-			log.warn("名（カナ）が入力されていません");			
+			log.warn(AppConstants.ERROR_NAME_KANA_INFO);			
 			return false;
 		}
 		return true;
@@ -162,10 +180,10 @@ public class User implements Serializable {
 		// 最大年齢（150歳）
 		final int MAX_AGE = 150;
 		if (param == null || "".equals(param)) {
-			log.warn("誕生日が入力されていません");
+			log.warn(AppConstants.ERROR_BIRTH_NULL);
 			return false;
 		} else if (!param.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
-			log.warn("誕生日は半角数字のみ有効");
+			log.warn(AppConstants.ERROR_BIRTH_INFO);
 			return false;
 		}
 
@@ -197,7 +215,7 @@ public class User implements Serializable {
 			return true;
 
 		} catch (DateTimeParseException e) {
-			log.warn("存在しない日付");
+			log.warn(AppConstants.ERROR_BIRTH_INFO2);
 			return false;
 		}
 	}
@@ -209,10 +227,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidPhone(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("電話番号が入力されていません");
+			log.warn(AppConstants.ERROR_TELL_NULL);
 			return false;
 		} else if (!param.matches("^0\\d{9,10}$")) {
-			log.warn("無効な電話番号です");
+			log.warn(AppConstants.ERROR_TELL_INFO);
 			return false;
 		}
 		return true;
@@ -224,10 +242,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidZip(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("郵便番号が入力されていません");
+			log.warn(AppConstants.ERROR_ZIP_NULL);
 			return false;
 		} else if (!param.matches("^\\d{7}$")) {
-			log.warn("無効な郵便番号です");
+			log.warn(AppConstants.ERROR_ZIP_NULL);
 			return false;
 		}
 		return true;
@@ -239,10 +257,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidAddress(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("住所が入力されていません");
+			log.warn(AppConstants.ERROR_ADRESS_NULL);
 			return false;
 		} else if (!param.matches("^[一-龠ぁ-ゔァ-ヴー0-9０-９a-zA-ZＡ-Ｚａ-ｚ\\s\\-\\.\\/,\\(\\)\\&・]*$")) {
-			log.warn("無効な記号が入力されています");
+			log.warn(AppConstants.ERROR_ADRESS_INFO);
 			return false;
 		}
 		return true;
@@ -253,18 +271,37 @@ public class User implements Serializable {
 	 */
 	public boolean isValidEmail(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("メールアドレスが入力されていません");
+			log.warn(AppConstants.ERROR_MAIL_NULL);
 			return false;
 		} else if (!param.matches("^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
-			log.warn("無効な記号が入力されています");
+			log.warn(AppConstants.ERROR_MAIL_INFO);
 			return false;
 		} else if(new UserDAO().checkUserEmail(param)) {
-			log.warn("そのメールアドレスは使用されています");
+			log.warn(AppConstants.ERROR_MAIL_USED);
 			return false;
 		}
-		
 		return true;
 	}
+	
+	/**
+	 * メールアドレス2
+	 */
+	public String isValidEmail2(String param) {
+		String ress="";
+		if (param == null || "".equals(param)) {
+			ress = AppConstants.ERROR_MAIL_NULL;
+		} else if (!param.matches("^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
+			ress = AppConstants.ERROR_MAIL_INFO;
+		} else if(new UserDAO().checkUserEmail(param)) {
+			ress = AppConstants.ERROR_MAIL_USED;
+		}
+		//メールアドレスに不具合があった場合ログを出す
+		if(!("".equals(ress))) {
+			log.warn(ress);	
+		}
+		return ress;
+	}
+	
 	
 	/**
 	 * パスワード
@@ -272,10 +309,10 @@ public class User implements Serializable {
 	 */
 	public boolean isValidPassword(String param) {
 		if (param == null || "".equals(param)) {
-			log.warn("パスワードが入力されていません");
+			log.warn(AppConstants.ERROR_PASSWORD_NULL);
 			return false;
 		} else if (!param.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$")) {
-			log.warn("無効なパスワードです");
+			log.warn(AppConstants.ERROR_PASSWORD_INFO);
 			return false;
 		}
 		return true;
