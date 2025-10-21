@@ -23,17 +23,13 @@ public class UserDAO {
 	
 
 	/**
-	 * @param 入力されたEmailがDB上に複数ないかチェック
-	 * @return
+	 * 入力されたEmailがDB上に複数ないかチェック
 	 */
 	public boolean checkUserEmail(String inputEmail) {
 		
 		// データベースへの接続
 		try (Connection conn = DBManager.getConnection()) {
 
-//			String sql = "SELECT LAST_NAME, FIRST_NAME, LAST_FURIGANA, FIRST_FURIGANA, " +
-//        "GENDER, BIRTH, PHONE01, PHONE02, PHONE03, ZIP01, ZIP02, ADRESS, EMAIL, PASSWORD " +
-//        "FROM USER_DATA WHERE EMAIL = ?";
 			String sql = "SELECT COUNT(*) FROM USER_DATA WHERE EMAIL = ?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -48,6 +44,32 @@ public class UserDAO {
 		}
 		return true;
 	}
+	
+	/**
+	 * 入力されたEmailからDB上で個人データを取得する
+	 */
+	public User findUserByEmail(String inputEmail) {
+		User user = null;
+		
+		// データベースへの接続
+		try (Connection conn = DBManager.getConnection()) {
+			String sql = "SELECT ID, EMAIL, PASSWORD FROM USER_DATA WHERE EMAIL = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, inputEmail);
+      ResultSet rs = pstmt.executeQuery();
+
+      	if (rs.next()) {
+      		user = new User();
+      		user.setEmail(rs.getString("EMAIL"));
+      		user.setPassword(rs.getString("PASSWORD")); // パスワードはハッシュで保存されている前提
+      	}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+			return user;	//見つからなければnull
+		}
+	
 	
 	/**
 	 * 全個人データの取得

@@ -18,8 +18,8 @@
       <div class="error-message"><%= request.getAttribute("error") %></div>
     <% } %>
 
-    <form action="LoginServlet" method="post">
-      <input type="text" name="username" placeholder="ユーザー名" required />
+    <form action="LogInServlet" method="post">
+      <input type="text" name="mailaddress" placeholder="メールアドレス" required />
       <input type="password" name="password" placeholder="パスワード" required />
       <input type="submit" value="ログイン" />
     </form>

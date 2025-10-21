@@ -116,7 +116,7 @@ public class User implements Serializable {
 		//boolean isEmail = isValidEmail(this.email);
 		//validateMap.put(EMAIL, isEmail);
 
-		String isEmail = isValidEmail2(this.email);
+		String isEmail = isValidEmail(this.email);
 		
 		switch(isEmail) {
 		case "":		//email問題なし
@@ -265,28 +265,11 @@ public class User implements Serializable {
 		}
 		return true;
 	}
-
-	/**
-	 * メールアドレス
-	 */
-	public boolean isValidEmail(String param) {
-		if (param == null || "".equals(param)) {
-			log.warn(AppConstants.ERROR_MAIL_NULL);
-			return false;
-		} else if (!param.matches("^[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
-			log.warn(AppConstants.ERROR_MAIL_INFO);
-			return false;
-		} else if(new UserDAO().checkUserEmail(param)) {
-			log.warn(AppConstants.ERROR_MAIL_USED);
-			return false;
-		}
-		return true;
-	}
 	
 	/**
 	 * メールアドレス2
 	 */
-	public String isValidEmail2(String param) {
+	public String isValidEmail(String param) {
 		String ress="";
 		if (param == null || "".equals(param)) {
 			ress = AppConstants.ERROR_MAIL_NULL;
