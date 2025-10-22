@@ -17,7 +17,7 @@ import model.User;
 import util.PassWordEncryption;
 
 /**
- * ログイン
+ * ログイン画面からログイン成功画面の遷移を管理
  */
 @Slf4j
 @WebServlet("/LogInServlet")
