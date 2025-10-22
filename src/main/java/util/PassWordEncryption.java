@@ -10,7 +10,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class PassWordEncryption {
 	/**
 	 * 文字のハッシュ化
-	 * @param 入力されたパスワード
+	 * @param plainPassword 入力されたパスワード
 	 * @return ハッシュ化した文字列
 	 */
 	public static String hash(String plainPassword) {
@@ -19,8 +19,8 @@ public class PassWordEncryption {
 
 	/**
 	 * 入力値が正しいかチェック
-	 * @param1 入力値
-	 * @param2 DBから取得したハッシュ値
+	 * @param1 plainPassword 入力値
+	 * @param2 hashedPassword DBから取得したハッシュ値
 	 * @return
 	 */
 	public static boolean verify(String plainPassword, String hashedPassword) {

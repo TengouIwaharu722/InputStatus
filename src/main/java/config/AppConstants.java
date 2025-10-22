@@ -40,6 +40,10 @@ final public class AppConstants {
 	/** 登録完了の画面 */
 	public static final String RESISTER_PAGE_URL = "WEB-INF/jsp/registerDone.jsp";
 
+	/** ログイン成功の画面 */
+	public static final String LOGIN_SUCCESS_URL = "WEB-INF/jsp/loginSuccess.jsp";
+	
+	
 	/** 入力値のkeyのリスト */
 	public static final List<String> PARAM_LIST;
 

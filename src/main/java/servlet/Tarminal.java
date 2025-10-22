@@ -54,8 +54,6 @@ public class Tarminal extends HttpServlet {
 			User usar = (User) session.getAttribute(AppConstants.SESSION_NAME);
 
 			//登録処理の呼び出し
-//			RegisterLogic logic = new RegisterLogic();
-//			logic.execute(uear);
 			PostUserLogic logic = new PostUserLogic();
 			logic.execute(usar);
 			
