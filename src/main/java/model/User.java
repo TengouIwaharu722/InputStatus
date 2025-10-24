@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * ユーザーの入力情報
+ * ※Serializableはセッションに保存時に必要
  */
 @Slf4j
 public class User implements Serializable {

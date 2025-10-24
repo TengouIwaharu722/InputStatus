@@ -8,6 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 /**
  * コネクションプール（Hikari）を使った 接続マネージャ
+ * HikariはMavenで設定。
  */
 public class DBManager {
 
