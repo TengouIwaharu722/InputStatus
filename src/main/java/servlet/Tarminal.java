@@ -1,8 +1,12 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,9 +16,9 @@ import jakarta.servlet.http.HttpSession;
 
 import bo.PostUserLogic;
 import config.AppConstants;
-import config.AppInitializer;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
+import util.DBManager;
 
 /**
  * サーブレット
@@ -25,12 +29,45 @@ import model.User;
 public class Tarminal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	//アプリケーションのルートパス
+	public static String dataFolderPath;
+	
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		//定数クラスの初期化処理
-		AppInitializer.initiaLize();
-		log.info("初期化完了");
+	
+	// 配布用にDBを配置させるためアプリケーションのルートパス取得
+			ServletContext context = getServletContext();
+			// dataフォルダをつけてパス作成
+			dataFolderPath = context.getRealPath("/data");
+
+			//DB接続オブジェクトconnでSQL実行オブジェクトstmlを作成
+			try (Connection conn = DBManager.getConnection(); Statement stmt = conn.createStatement()) {
+
+				String sql = "CREATE TABLE IF NOT EXISTS users ("
+	           + "id INT PRIMARY KEY AUTO_INCREMENT, "
+	           + "LAST_NAME VARCHAR(100), "
+	           + "FIRST_NAME VARCHAR(100), "
+	           + "LAST_FURIGANA VARCHAR(100), "
+	           + "FIRST_FURIGANA VARCHAR(100), "
+	           + "GENDER VARCHAR(10), "
+	           + "BIRTH DATE, "
+	           + "PHONE01 VARCHAR(20), "
+	           + "PHONE02 VARCHAR(20), "
+	           + "PHONE03 VARCHAR(20), "
+	           + "ZIP01 VARCHAR(10), "
+	           + "ZIP02 VARCHAR(10), "
+	           + "ADRESS VARCHAR(255), "
+	           + "EMAIL VARCHAR(255), "
+	           + "PASSWORD VARCHAR(255)"
+	           + ");";
+						
+				stmt.executeUpdate(sql);
+				log.info("初期化完了");
+
+			} catch (SQLException e) {
+				throw new ServletException("DB初期化失敗", e);
+			}
 
 	}
 

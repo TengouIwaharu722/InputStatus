@@ -28,7 +28,7 @@ public class UserDAO {
 		// データベースへの接続
 		try (Connection conn = DBManager.getConnection()) {
 
-			String sql = "SELECT COUNT(*) FROM USER_DATA WHERE EMAIL = ?";
+			String sql = "SELECT COUNT(*) FROM USERS WHERE EMAIL = ?";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputEmail); // inputEmail は検索対象のメールアドレス
@@ -52,7 +52,7 @@ public class UserDAO {
 		// データベースへの接続
 		try (Connection conn = DBManager.getConnection()) {
 			//個人のデータを取得
-			String sql = "SELECT * FROM USER_DATA WHERE EMAIL = ?";
+			String sql = "SELECT * FROM USERS WHERE EMAIL = ?";
 			
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputEmail);
@@ -127,7 +127,7 @@ public class UserDAO {
 	 */
 	public boolean create(Connection conn, User user) throws SQLException {
 
-		String sql = "INSERT INTO USER_DATA(" + "LAST_NAME, FIRST_NAME, LAST_FURIGANA, FIRST_FURIGANA, GENDER, BIRTH, "
+		String sql = "INSERT INTO USERS(" + "LAST_NAME, FIRST_NAME, LAST_FURIGANA, FIRST_FURIGANA, GENDER, BIRTH, "
 				+ "PHONE01, PHONE02, PHONE03, ZIP01, ZIP02, ADRESS, EMAIL, PASSWORD"
 				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

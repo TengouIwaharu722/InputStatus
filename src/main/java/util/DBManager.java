@@ -6,16 +6,21 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import lombok.extern.slf4j.Slf4j;
+import servlet.Tarminal;
+
+
 /**
  * コネクションプール（Hikari）を使った 接続マネージャ
  * HikariはMavenで設定。
+ * C:/Users/7Java5/Desktop/サーブレットJSP/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/InputStatus/data/persondb
+ * ueda@gmail.com
+ * 1234aSc@
+ * 
  */
+@Slf4j
 public class DBManager {
 
-	// 学校jsp
-	final static String JDBC_URL = "jdbc:h2:file:C:/Users/7Java5/Desktop/H2DB/input";
-	// 自宅
-	// final static String JDBC_URL ="jdbc:h2:file:C:/Users/uedak/Desktop/H2/data/dokotubu";
 	final static String DB_USER = "sa";		//DBの接続ID
 	final static String DB_PASS = "";			//DBの接続パスワード
 	private static HikariDataSource dataSource;
@@ -23,8 +28,10 @@ public class DBManager {
 	static {
 		
 				try {
+						log.info("jdbc:h2:file:"+	Tarminal.dataFolderPath+"/persondb");
 						HikariConfig config = new HikariConfig();
-						config.setJdbcUrl(JDBC_URL);
+						config.setJdbcUrl("jdbc:h2:file:" + Tarminal.dataFolderPath + 
+								"/persondb");
 						config.setUsername(DB_USER);
 						config.setPassword(DB_PASS);
 						config.setDriverClassName("org.h2.Driver");
