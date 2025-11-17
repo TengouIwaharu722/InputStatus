@@ -32,7 +32,7 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 
 ## 📂 ディレクトリ構成（例）
 ```
-![use_file](./docs/use_file.png)
+![use_file](docs/use_file.png)
 ```
 
 ---
