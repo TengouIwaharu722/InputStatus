@@ -2,55 +2,37 @@
 
 ## 📘 概要
 Java / JSP / Servlet / SQL を用いて開発した Web アプリケーションです。  
-ユーザー管理・データ登録・検索などの CRUD 処理を実装し、MVC 設計と DB 連携を学習目的で作成しました。
+ユーザー管理・データ登録・MVC 設計と DB 連携を学習目的で作成しました。
 
 ---
 
 ## 🛠 開発環境
 | 項目 | 内容 |
 |------|------|
-| 言語 | Java（JDK 17 など） |
+| 言語 | Java（JDK 21 など） |
 | フレームワーク | Servlet / JSP（Jakarta EE） |
-| データベース | MySQL 8.0 |
-| ビルドツール | Apache Maven または Eclipse Dynamic Web Project |
+| データベース | H2DB 2.2.224 |
+| ビルドツール | Apache Maven|
 | アプリケーションサーバー | Apache Tomcat 10.x |
-| IDE | Eclipse / IntelliJ IDEA / VS Code |
+| IDE | Eclipse  |
 | バージョン管理 | Git / GitHub |
-| OS | macOS / Windows |
+| OS | Windows |
 
 ---
 
 ## 🧩 機能一覧
 | カテゴリ | 内容 |
 |------------|------|
-| ユーザー管理 | 新規登録・ログイン・ログアウト・パスワード変更 |
-| データ登録 | フォーム入力によるデータ追加・バリデーション処理 |
-| データ検索 | キーワード検索・絞り込み検索・一覧表示 |
-| 更新／削除 | 登録データの編集・削除機能 |
-| セッション管理 | ログインユーザー情報の保持とアクセス制御 |
+| ユーザー管理 | 新規登録・ログイン・ログアウト |
+| データ登録 | フォーム入力によるデータ追加・バリデーション処理・パスワード暗号化（bcrypt使用）|
+| データ照合 | メールアドレスとパスワードによるユーザ照合|
 | エラーハンドリング | 例外処理／404ページ／入力エラーメッセージ表示 |
 
 ---
 
 ## 📂 ディレクトリ構成（例）
 ```
-project/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── servlet/
-│   │   │   │   ├── LoginServlet.java
-│   │   │   │   ├── RegisterServlet.java
-│   │   │   │   └── ListServlet.java
-│   │   │   └── dao/
-│   │   │       └── UserDAO.java
-│   │   ├── webapp/
-│   │   │   ├── WEB-INF/web.xml
-│   │   │   ├── jsp/login.jsp
-│   │   │   ├── jsp/register.jsp
-│   │   │   └── css/style.css
-│   └── test/
-└── README.md
+
 ```
 
 ---
