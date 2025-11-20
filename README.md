@@ -30,11 +30,15 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 
 ---
 
-## 📂 ディレクトリ構成（例）
+## 📂 ディレクトリ構成
 
 ![use_file](docs/use_file.png)
 
 ---
+## 🗄 画面遷移
+### 📘 遷移図
+![use_file](docs/input.png)
+
 
 ## 🗄 データベース構成
 ### 📘 ER図
