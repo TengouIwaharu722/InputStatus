@@ -63,21 +63,7 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 - SQLインジェクション対策として **PreparedStatement** を使用
 - パスワードは **ハッシュ化（bcrypt）** して保存
 - JSP include によるヘッダー・フッターの共通化
-- ER図・シーケンス図を用いて処理を明確化
 
----
-
-## 📊 UML / 設計資料
-> 以下のファイルを差し替えてください（今はプレースホルダー画像です）：
->
-> - `docs/usecase.png`：ユースケース図  
-> - `docs/uml_sequence.png`：シーケンス図  
-> - `docs/class_diagram.png`：クラス図  
->
-> 例：  
-> ![シーケンス図](./docs/uml_sequence.png)
-
----
 
 ## 💬 使用技術のポイント
 - **Servlet & JSP**：HTTPリクエスト処理・セッション管理・リダイレクト制御  
@@ -89,22 +75,7 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 ---
 
 ## 🧭 今後の拡張予定
-- Bootstrap / Vue.js の導入でUI改善  
-- REST API 化（JSON対応）  
-- Docker による環境構築自動化  
-- ログイン履歴・アクセスログの分析機能追加  
-- JUnit / Mockito による単体テストの充実  
-
----
-
-## 📸 画面キャプチャ（例）
-> - `docs/login_screen.png`  
-> - `docs/list_screen.png`  
->
-> 例：  
-> ![ログイン画面](./docs/login_screen.png)
-
----
+- 入室時間と退出時間の入力画面とDB化
 
 ## 🧾 ライセンス・著作権
 このプロジェクトは学習目的で作成したものであり、商用利用は想定していません。  
