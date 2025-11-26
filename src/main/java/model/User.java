@@ -116,25 +116,26 @@ public class User implements Serializable {
 		//メールアドレスのチェック
 		//boolean isEmail = isValidEmail(this.email);
 		//validateMap.put(EMAIL, isEmail);
-		validateMap.put(EMAIL, true);
+		
+		//validateMap.put(EMAIL, true);
 
-//		String isEmail = isValidEmail(this.email);
-//		
-//		switch(isEmail) {
-//		case "":		//email問題なし
-//			validateMap.put(EMAIL, true);
-//			break;
-//		case ERROR_MAIL_NULL:	//email入力なし
-//			validateMap.put(EMAIL, false);
-//			break;
-//		case ERROR_MAIL_INFO:	//無効な値が入っている
-//			validateMap.put(EMAIL, false);
-//			break;
-//		case ERROR_MAIL_USED:	//DB上に存在している
-//			validateMap.put(EMAIL, true);	//記述は問題なし
-//			validateMap.put(EMAIL_ORIZIN, false);	//DB上に存在
-//			break;
-//		}
+		String isEmail = isValidEmail(this.email);
+		
+		switch(isEmail) {
+		case "":		//email問題なし
+			validateMap.put(EMAIL, true);
+			break;
+		case ERROR_MAIL_NULL:	//email入力なし
+			validateMap.put(EMAIL, false);
+			break;
+		case ERROR_MAIL_INFO:	//無効な値が入っている
+			validateMap.put(EMAIL, false);
+			break;
+		case ERROR_MAIL_USED:	//DB上に存在している
+			//validateMap.put(EMAIL, true);	//記述は問題なし
+			validateMap.put(EMAIL_ORIZIN, false);	//DB上に存在
+			break;
+		}
 				
 		//パスワードのチェック
 		boolean isPassword = isValidPassword(this.password);
