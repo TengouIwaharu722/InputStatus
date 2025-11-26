@@ -91,7 +91,7 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 - **氏名（またはGitHubアカウント）**：ueda kiyotaka
 - **開発期間**：2025年11月〜11月  
 - **連絡先**：your-email@example.com  
-- **GitHub**：https://github.com/yourname/java-webapp-portfolio
+- **GitHub**：https://github.com/TengouIwaharu722/InputStatus.git
 
 ---
 
