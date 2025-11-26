@@ -41,20 +41,24 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 ![use_file](docs/input.png)
 
 
-## 🗄 データベース構成
-### 📘 ER図
-> 画像を `docs/er_diagram.png` に差し替えてください。  
-> 例：  
-> ![ER図](./docs/er_diagram.png)
-
 ### テーブル定義例：users
 | カラム名 | 型 | 説明 |
 |-----------|----|------|
 | id | INT | 主キー（AUTO_INCREMENT） |
-| name | VARCHAR(50) | ユーザー名 |
-| email | VARCHAR(100) | メールアドレス |
+| last_name | VARCHAR(100) | 姓 |
+| first_name | VARCHAR(100) | 名 |
+| last_furigana | VARCHAR(100) | 姓（カナ） |
+| first_furigana | VARCHAR(100) | 名（カナ） |
+| gender | VARCHAR(10) | 性別 |
+| birth | DATE | 生年月日 |
+| phone01 | VARCHAR(20) | 電話番号1 |
+| phone02 | VARCHAR(20) | 電話番号2 |
+| phone03 | VARCHAR(20) | 電話番号3 |
+| zip01 | VARCHAR(10) | 郵便番号1 |
+| zip02 | VARCHAR(10) | 郵便番号2 |
+| adress | VARCHAR(255) | 住所 |
+| email | VARCHAR(255) | メールアドレス |
 | password | VARCHAR(255) | ハッシュ化されたパスワード |
-| created_at | DATETIME | 登録日時 |
 
 ---
 
@@ -84,8 +88,8 @@ Java / JSP / Servlet / SQL を用いて開発した Web アプリケーション
 ---
 
 ## 👤 作成者
-- **氏名（またはGitHubアカウント）**：Your Name  
-- **開発期間**：2025年○月〜○月  
+- **氏名（またはGitHubアカウント）**：ueda kiyotaka
+- **開発期間**：2025年11月〜11月  
 - **連絡先**：your-email@example.com  
 - **GitHub**：https://github.com/yourname/java-webapp-portfolio
 
